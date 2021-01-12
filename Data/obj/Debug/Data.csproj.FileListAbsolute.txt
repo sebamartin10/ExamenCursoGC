@@ -1,0 +1,6 @@
+C:\Users\sythe\source\repos\PruebaCurso\Data\bin\Debug\Data.dll
+C:\Users\sythe\source\repos\PruebaCurso\Data\bin\Debug\Data.pdb
+C:\Users\sythe\source\repos\PruebaCurso\Data\obj\Debug\Data.csprojAssemblyReference.cache
+C:\Users\sythe\source\repos\PruebaCurso\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+C:\Users\sythe\source\repos\PruebaCurso\Data\obj\Debug\Data.dll
+C:\Users\sythe\source\repos\PruebaCurso\Data\obj\Debug\Data.pdb

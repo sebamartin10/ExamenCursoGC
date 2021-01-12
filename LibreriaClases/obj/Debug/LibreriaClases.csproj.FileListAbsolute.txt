@@ -1,0 +1,9 @@
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\bin\Debug\LibreriaClases.dll
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\bin\Debug\LibreriaClases.pdb
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\bin\Debug\Data.dll
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\bin\Debug\Data.pdb
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\obj\Debug\LibreriaClases.csprojAssemblyReference.cache
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\obj\Debug\LibreriaClases.csproj.CoreCompileInputs.cache
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\obj\Debug\LibreriaClases.csproj.CopyComplete
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\obj\Debug\LibreriaClases.dll
+C:\Users\sythe\source\repos\PruebaCurso\LibreriaClases\obj\Debug\LibreriaClases.pdb
