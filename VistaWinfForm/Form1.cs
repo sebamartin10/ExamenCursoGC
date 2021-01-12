@@ -15,6 +15,8 @@ namespace VistaWinfForm
     public partial class Form1 : Form
     {
         ParametrosAplicativo paramAplicativo = null;
+       
+        bool calidadPremium = false;
         ExpertoCotizacion expertoCotiz = new ExpertoCotizacion();
         public Form1()
         {
@@ -102,46 +104,66 @@ namespace VistaWinfForm
 
         private void btnCotizar_Click(object sender, EventArgs e)
         {
-            #region Validaciones
-            if (String.IsNullOrEmpty(txtPrecio.Text)) {
-                ErrorAplicativo err = new ErrorAplicativo();
-                err.codigoError = -1;
-                err.descripcionError = "Debe completar el campo Precio Unitario antes de continuar con la cotización";
-                FrmError frmError = new FrmError();
-                frmError.Controls["lblMensajeError"].Text = "Código Error: " + err.codigoError + " " + err.descripcionError;
-                frmError.ShowDialog();
-            }
-            if (String.IsNullOrEmpty(txtCantidad.Text)) {
-                ErrorAplicativo err = new ErrorAplicativo();
-                err.codigoError = -1;
-                err.descripcionError = "Debe completar el campo Cantidad antes de continuar con la cotización";
-                FrmError frmError = new FrmError();
-                frmError.Controls["lblMensajeError"].Text = "Código Error: " + err.codigoError + " " + err.descripcionError;
-                frmError.ShowDialog();
-            }
-            #endregion
-            (ErrorAplicativo err,decimal precioCotizado) respuesta = expertoCotiz.CalcularPrecioCotizacion(Convert.ToDecimal(txtPrecio.Text),Convert.ToInt32(txtCantidad.Text));
-            if (respuesta.err.codigoError!=0) {
-                FrmError frmError = new FrmError();
+            try
+            {
+                #region Validaciones
+                if (String.IsNullOrEmpty(txtPrecio.Text))
+                {
+                    ErrorAplicativo err = new ErrorAplicativo();
+                    err.codigoError = -1;
+                    err.descripcionError = "Debe completar el campo Precio Unitario antes de continuar con la cotización";
+                    FrmError frmError = new FrmError();
+                    frmError.Controls["lblMensajeError"].Text = "Código Error: " + err.codigoError + " " + err.descripcionError;
+                    frmError.ShowDialog();
+                }
+                if (String.IsNullOrEmpty(txtCantidad.Text))
+                {
+                    ErrorAplicativo err = new ErrorAplicativo();
+                    err.codigoError = -1;
+                    err.descripcionError = "Debe completar el campo Cantidad antes de continuar con la cotización";
+                    FrmError frmError = new FrmError();
+                    frmError.Controls["lblMensajeError"].Text = "Código Error: " + err.codigoError + " " + err.descripcionError;
+                    frmError.ShowDialog();
+                }
+                #endregion
+                (ErrorAplicativo err, decimal precioCotizado) respuesta = expertoCotiz.CalcularPrecioCotizacion(Convert.ToDecimal(txtPrecio.Text), Convert.ToInt32(txtCantidad.Text),calidadPremium);
+                if (respuesta.err.codigoError != 0)
+                {
+                    FrmError frmError = new FrmError();
                     frmError.Controls["lblMensajeError"].Text = "Código Error: " + respuesta.err.codigoError + " " + respuesta.err.descripcionError;
+                    frmError.ShowDialog();
+
+
+
+                }
+                lblPrecioCotizado.Text = String.Format("{0:c}", respuesta.precioCotizado);
+                BorrarCampos();
+            }
+            catch (Exception)
+            {
+                ErrorAplicativo err = new ErrorAplicativo();
+                err.codigoError = -1;
+                err.descripcionError = "Ocurrió un error inesperado, compruebe haber ingresado datos correctos en los campos solicitados";
+                FrmError frmError = new FrmError();
+                frmError.Controls["lblMensajeError"].Text = "Código Error: " + err.codigoError + " " + err.descripcionError;
                 frmError.ShowDialog();
                 
-                    
-                
             }
-            lblPrecioCotizado.Text = String.Format("{0:c}", respuesta.precioCotizado);
-            BorrarCampos();
+            
         }
 
         private void rdbtnStandard_CheckedChanged(object sender, EventArgs e)
         {
-            lblStockDisponible.Text = "Cantidad de stock disponible: " + expertoCotiz.FiltrarPorCalidad(0);
+          
+            calidadPremium = false;
+            
            
         }
 
         private void rdbtnPremium_CheckedChanged(object sender, EventArgs e)
         {
-            lblStockDisponible.Text = "Cantidad de stock disponible: " + expertoCotiz.FiltrarPorCalidad(1);
+          
+            calidadPremium = true;
         }
         private void BorrarCampos() {
             txtCantidad.Text = string.Empty;

@@ -220,7 +220,7 @@ namespace LibreriaExpertoLogica
                 paramAplicativo.camisas[i].caracteristica = paramAplicativo.caracteristicas.Where(x => x.nombreCaracteristicaTipoPrenda == "Cuello Mao").First();
             }
             //De las 500 camisas solo 300 tienen cuello normal
-            for (int i=199;i<500;i++) {
+            for (int i=200;i<500;i++) {
                 paramAplicativo.camisas[i].caracteristica = paramAplicativo.caracteristicas.Where(x => x.nombreCaracteristicaTipoPrenda == "Cuello Normal").First();
             }
             //Crear las 500 camisas mangas largas.

@@ -95,7 +95,7 @@ namespace LibreriaExpertoLogica
             }
             return cantidadDisponible;
         }
-        public (ErrorAplicativo, decimal) CalcularPrecioCotizacion(decimal precioUnitario,int cantidad) {
+        public (ErrorAplicativo, decimal) CalcularPrecioCotizacion(decimal precioUnitario,int cantidad,bool calidadPremium) {
             #region Validaciones
             ErrorAplicativo err = new ErrorAplicativo();
             if (cantidad>paramAplicativo.prendas.Count)
@@ -105,13 +105,28 @@ namespace LibreriaExpertoLogica
                 return (err, 0);
             }
             #endregion
-            
             int porcentajeAumentoRebajaAplicar = paramAplicativo.prendas.First().caracteristica.porcentajeAumentoRebaja;
-            int porcentajeAumentoRebajaCalidadAplicar = paramAplicativo.prendas.First().calidad.porcentajeAumentoRebaja;
+            int porcentajeAumentoRebajaCalidadAplicar = 0;
+            int aumentoRebajaPrecio = 0;
+            decimal precioCotizado = 0;
+            
             //Para simplificar el cálculo del ID de la cotización se hará uso de la clase Random que genera un número aleatorio.
             //Aclaro que en un entorno real esto no es una buena práctica porque puede dar lugar a IDs repetidos.
             var random = new Random();
-            decimal precioCotizado = (precioUnitario + ((precioUnitario*porcentajeAumentoRebajaAplicar)/(100))+((precioUnitario*porcentajeAumentoRebajaCalidadAplicar)/(100)))*cantidad;
+            if (calidadPremium)
+            {
+                porcentajeAumentoRebajaCalidadAplicar = paramAplicativo.calidades.Where(x => x.nombreCalidadPrenda.Contains("Premium")).First().porcentajeAumentoRebaja;
+                precioCotizado = (precioUnitario + ((precioUnitario * porcentajeAumentoRebajaAplicar) / (100)) + ((precioUnitario * porcentajeAumentoRebajaCalidadAplicar) / (100))) * cantidad;
+            }
+            else
+            {
+                
+                precioCotizado = (precioUnitario + ((precioUnitario * porcentajeAumentoRebajaAplicar) / (100))) * cantidad;
+            }
+
+            
+            
+            
             //Se registra la cotización.
             Cotizacion cotizacion = new Cotizacion
             {
@@ -125,6 +140,7 @@ namespace LibreriaExpertoLogica
             return (err,precioCotizado);
         }
         public List<(int, string, string, int)> ConsultarCotizaciones() {
+            
             List<(int, string, string, int)> cotizaciones = new List<(int, string, string, int)>();
             foreach (var cotizacion in paramAplicativo.cotizaciones) {
                 (int, string, string, int) dataCotizacion =  (cotizacion.idCotizacion,cotizacion.fechaHoraCotizacion.ToShortDateString()+"-"+cotizacion.fechaHoraCotizacion.ToShortTimeString(),string.Format("{0:c}",cotizacion.precioCotizacion),cotizacion.cantidadCotizada);

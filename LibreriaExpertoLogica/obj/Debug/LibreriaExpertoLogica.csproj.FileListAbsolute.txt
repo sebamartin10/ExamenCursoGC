@@ -9,3 +9,14 @@ C:\Users\sythe\source\repos\PruebaCurso\LibreriaExpertoLogica\obj\Debug\Libreria
 C:\Users\sythe\source\repos\PruebaCurso\LibreriaExpertoLogica\obj\Debug\LibreriaExpertoLogica.csproj.CopyComplete
 C:\Users\sythe\source\repos\PruebaCurso\LibreriaExpertoLogica\obj\Debug\LibreriaExpertoLogica.dll
 C:\Users\sythe\source\repos\PruebaCurso\LibreriaExpertoLogica\obj\Debug\LibreriaExpertoLogica.pdb
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\bin\Debug\LibreriaExpertoLogica.dll
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\bin\Debug\LibreriaExpertoLogica.pdb
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\bin\Debug\Data.dll
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\bin\Debug\LibreriaClases.dll
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\bin\Debug\Data.pdb
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\bin\Debug\LibreriaClases.pdb
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\obj\Debug\LibreriaExpertoLogica.csprojAssemblyReference.cache
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\obj\Debug\LibreriaExpertoLogica.csproj.CoreCompileInputs.cache
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\obj\Debug\LibreriaExpertoLogica.csproj.CopyComplete
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\obj\Debug\LibreriaExpertoLogica.dll
+C:\Users\sythe\source\repos\examencursogc\LibreriaExpertoLogica\obj\Debug\LibreriaExpertoLogica.pdb
